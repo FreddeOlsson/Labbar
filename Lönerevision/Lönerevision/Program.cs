@@ -15,11 +15,11 @@ namespace Lönerevision
             {
                 try
                 {
-                    int count = ReadInt("Ange antal löner att mata in: ");
+                    int count = ReadInt("Ange minst 2 löner för att starta beräkning: ");
 
                     if (count < 2)
                     {
-                        throw new Exception();
+                        throw new ArgumentOutOfRangeException();
                     }
                     else
                     {
@@ -28,7 +28,7 @@ namespace Lönerevision
 
 
                 }
-                catch (Exception)
+                catch (ArgumentOutOfRangeException)
                 {
 
                     Console.WriteLine();
@@ -39,7 +39,7 @@ namespace Lönerevision
 
                 }
 
-                Console.WriteLine();        //Lägger in så att det är Esc-knappen som avslutar min beräkning annar så startar en ny beräkning
+                Console.WriteLine();        //Lägger in så att det är Esc-knappen som avslutar min beräkning annars så startar en ny beräkning
                 Console.BackgroundColor = ConsoleColor.DarkGreen;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Tryck tangent för en ny beräkning - ESC avslutar.");

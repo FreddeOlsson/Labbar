@@ -25,6 +25,7 @@ namespace KvittoLabb
             int tia = 0;
             int femma = 0;
             int enkrona = 0;
+            int vaxelover = 0;
 
             // Läs in värden
             while (true)
@@ -41,12 +42,10 @@ namespace KvittoLabb
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nFEL! Summa måste vara över 1");
                         Console.ResetColor();
-                        continue;
+                        return;
                     }
-                    else
-                    {
-                        Console.WriteLine("Totalsumma är {0:c}", totalsumma);
-                    }
+                            
+                    Console.WriteLine("Totalsumma är {0:c}", totalsumma);
 
                     Console.Write("Ange erhållet belopp: ");
                     erhallet = int.Parse(Console.ReadLine());
@@ -59,10 +58,9 @@ namespace KvittoLabb
                         Console.ResetColor();
                         continue;
                     }
-                    else
-                    {
-                        Console.WriteLine("Erhållet är {0:c}", totalsumma);
-                    }
+                   
+                        Console.WriteLine("Erhållet är {0:c}", erhallet);
+                    
 
                     break;
 
@@ -85,23 +83,29 @@ namespace KvittoLabb
 
             // beräkna växeln
             femhundra = (int)vaxel / 500;
-            hundra = ((int)vaxel % 500) / 100;
-            femtio = (((int)vaxel % 500) % 100) / 50;
-            tjugo = ((((int)vaxel % 500) % 100) % 50) / 20;
-            tia = (((((int)vaxel % 500) % 100) % 50) % 20) / 10;
-            femma = ((((((int)vaxel % 500) % 100) % 50) % 20) % 10) / 5;
-            enkrona = (((((((int)vaxel % 500) % 100) % 50) % 20) % 10) % 5) / 1;
+            vaxelover = (int)vaxel % 500;
+            hundra = vaxelover / 100;
+            vaxelover = vaxelover % 100;
+            femtio = vaxelover / 50;
+            vaxelover = vaxelover % 50;
+            tjugo = vaxelover / 20;
+            vaxelover = vaxelover % 20;
+            tia = vaxelover / 10;
+            vaxelover = vaxelover % 10;
+            femma = vaxelover / 5;
+            vaxelover = vaxelover % 5;
+            enkrona = vaxelover / 1;
 
 
             //presentera kvitto
 
             Console.WriteLine("\nKVITTO");
             Console.WriteLine("--------------------------------");
-            Console.WriteLine("{0,-16} : {1,9:#,##0.00} kr", "Totalt", totalsumma);
-            Console.WriteLine("{0,-16} : {1,9:#,##0.00} kr", "Öresavrundning", avrundatBelopp);
-            Console.WriteLine("{0,-16} : {1,9:#,##0.00} kr", "Att Betala", total);
-            Console.WriteLine("{0,-16} : {1,9:#,##0.00} kr", "Erhållet", erhallet);
-            Console.WriteLine("{0,-16} : {1,9:#,##0.00} kr", "Växel", vaxel);
+            Console.WriteLine("{0,-16} : {1,11:c2}", "Totalt", totalsumma);
+            Console.WriteLine("{0,-16} : {1,11:c2}", "Öresavrundning", avrundatBelopp);
+            Console.WriteLine("{0,-16} : {1,11:c2}", "Att Betala", total);
+            Console.WriteLine("{0,-16} : {1,11:c2}", "Erhållet", erhallet);
+            Console.WriteLine("{0,-16} : {1,11:c2}", "Växel", vaxel);
             Console.WriteLine("--------------------------------");
 
             //Växel presentation.....Vet om att det lär vara repeterad kod men 
