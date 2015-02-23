@@ -60,7 +60,7 @@ namespace Solida_Volymer
         public abstract double SurfaceArea { get; }
         public abstract double Volume { get; }
 
-        //Konstruktorn
+        //Konstruktor
         protected Solid(double radius, double height)
         {
             Radius = radius;
