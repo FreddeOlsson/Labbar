@@ -1,0 +1,20 @@
+﻿@model SlumpadeKontakter.Models.Contact
+
+@{
+    ViewBag.Title = "Lägg till kontakt";
+}
+
+<h2>Lägg till kontakt</h2>
+<br/>
+
+
+
+@using (Html.BeginForm("Create", "Contact", FormMethod.Post, new {@class = "form-horizontal"}))
+{
+    @Html.Partial("_ContactForm")
+}
+
+<div>
+    @Html.ActionLink("Tillbaka till listan", "Index")
+</div>
+

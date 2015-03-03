@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SlumpadeKontakter.Models.Contact>
+@{
+    ViewBag.Title = "Kontakter";
+}
+<h2>Kontakter</h2>
+<p>
+    @Html.ActionLink("Lägg till ny kontakt", "Create")
+</p>
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr> 
+
+       @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Redigera", "Edit", new { id = item.ContactId }) | 
+                    @Html.ActionLink("Ta bort", "Delete", new { id = item.ContactId })
+                </td>
+            </tr>
+        } 
+    </table>
+}
+
+
+

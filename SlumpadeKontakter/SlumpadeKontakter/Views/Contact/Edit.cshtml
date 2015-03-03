@@ -1,0 +1,22 @@
+﻿@model SlumpadeKontakter.Models.Contact
+
+@{
+    ViewBag.Title = "Redigera Kontakt";
+}
+
+<h2>Redigera kontakt</h2>
+<br/>
+
+@using (Html.BeginForm("Edit", "Contact", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.Partial("_ContactForm")
+}
+
+<div>
+    @Html.ActionLink("Tillbaka till listan", "Index")
+</div>
+
+
+
+
+
